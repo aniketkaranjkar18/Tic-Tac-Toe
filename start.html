@@ -1,0 +1,46 @@
+<div id="input-fields" ng-show="showInputFields">
+    <form name="playerDetails">
+        <div class="d-inline mr-5">
+
+            <input name="player1" type="text" placeholder="player X name" ng-model="p1" required>
+
+
+        </div>
+        <div class="d-inline ml-5">
+
+            <input name="player2" type="text" placeholder="player O name" ng-model="p2" required>
+
+        </div>
+
+</div>
+
+<div>
+    <div id="player1Highlight" class="d-inline mr-5">Player X : {{p1}}</div>
+    <div id="player2Highlight" class="d-inline ml-5"> Player O : {{p2}}</div>
+    <p ng-show="playerDetails.player1.$error.required" ng-model="errorMessageP1">{{errorMessageP1}}</p>
+    <p ng-show="playerDetails.player2.$error.required" ng-model="errorMessageP2">{{errorMessageP2}}</p>
+
+</div>
+</form>
+<div>
+    <button ng-click="btnFunction()" class="btn btn-outline-success text-dark py-3 px-5 mt-3" id="play-btn"
+        ng-hide="hideStartButton">
+        <h3>{{btnValue}}</h3>
+    </button>
+    </button>
+</div>
+
+<div ng-controller="boardCtrl" class="container" ng-show="shoeBoxVisibility">
+    <div  class="board pt-5">
+        <div class="cell" data-cell></div>
+        <div class="cell" data-cell></div>
+        <div class="cell" data-cell></div>
+        <div class="cell" data-cell></div>
+        <div class="cell" data-cell></div>
+        <div class="cell" data-cell></div>
+        <div class="cell" data-cell></div>
+        <div class="cell" data-cell></div>
+        <div class="cell" data-cell></div>
+    </div>
+    <button  ng-click="playAgain()" class=" align-center btn btn-success mb-2">PLAY AGAIN</button>
+</div>

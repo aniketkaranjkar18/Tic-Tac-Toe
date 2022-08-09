@@ -49,63 +49,80 @@ ticTacToe.controller("boardCtrl", function ($scope) {
     const cellArray = document.querySelectorAll("[data-cell]");
     var playerO = 'O';
     var playerX = 'X';
-    let gamestatus=true;
+    let gamestatus = true;
     function startgame() {
-       
-        gamestatus=true;
+
+        gamestatus = true;
         var currentPlayer = playerO;
 
-       
+
         cellArray.forEach(cell => {
-           
+
             cell.addEventListener("click", handleClick, { once: true })
-            
+
         })
-    
-        
+
+
 
         function handleClick(e) {
-            if(gamestatus){
-            const currentCell = e.target;
+            if (gamestatus) {
+                const currentCell = e.target;
 
-            if (currentPlayer === playerO) {
-                currentPlayer = playerX;
+                if (currentPlayer === playerO) {
+                    currentPlayer = playerX;
 
-                document.getElementById("player1Highlight").style.color = "black"
-                document.getElementById("player2Highlight").style.color = "red"
+                    document.getElementById("player1Highlight").style.color = "black"
+                    document.getElementById("player2Highlight").style.color = "red"
 
-            } else {
-                currentPlayer = playerO;
-                document.getElementById("player2Highlight").style.color = "black"
-                document.getElementById("player1Highlight").style.color = "red"
+                } else {
+                    currentPlayer = playerO;
+                    document.getElementById("player2Highlight").style.color = "black"
+                    document.getElementById("player1Highlight").style.color = "red"
+                }
+
+                currentCell.innerText = currentPlayer;
+
+                if ((cellArray[0].innerText != "") && (cellArray[0].innerText == cellArray[1].innerText) && (cellArray[1].innerText == cellArray[2].innerText)) {
+                    setTimeout(function () { alert("Its a win, Please press the play again button or refresh the...!") }, 500);
+                    gamestatus = false;
+                } else if ((cellArray[3].innerText != "") && (cellArray[3].innerText == cellArray[4].innerText) && (cellArray[4].innerText == cellArray[5].innerText)) {
+                    setTimeout(function () { alert("Its a win, Please press the play again button or refresh the...!") }, 500);
+                    gamestatus = false;
+                } else if ((cellArray[6].innerText != "") && (cellArray[6].innerText == cellArray[7].innerText) && (cellArray[7].innerText == cellArray[8].innerText)) {
+                    setTimeout(function () { alert("Its a win, Please press the play again button or refresh the...!") }, 500);
+                    gamestatus = false;
+                } else if ((cellArray[0].innerText != "") && (cellArray[0].innerText == cellArray[3].innerText) && (cellArray[3].innerText == cellArray[6].innerText)) {
+                    setTimeout(function () { alert("Its a win, Please press the play again button or refresh the...!") }, 500);
+                    gamestatus = false;
+                } else if ((cellArray[1].innerText != "") && (cellArray[1].innerText == cellArray[4].innerText) && (cellArray[4].innerText == cellArray[7].innerText)) {
+                    setTimeout(function () { alert("Its a win, Please press the play again button or refresh the...!") }, 500);
+                    gamestatus = false;
+                } else if ((cellArray[2].innerText != "") && (cellArray[2].innerText == cellArray[5].innerText) && (cellArray[5].innerText == cellArray[8].innerText)) {
+                    setTimeout(function () { alert("Its a win, Please press the play again button or refresh the...!") }, 500);
+                    gamestatus = false;
+                } else if ((cellArray[0].innerText != "") && (cellArray[4].innerText == cellArray[0].innerText) && (cellArray[4].innerText == cellArray[8].innerText)) {
+                    setTimeout(function () { alert("Its a win, Please press the play again button or refresh the...!") }, 500);
+                    gamestatus = false;
+                } else if ((cellArray[2].innerText != "") && (cellArray[2].innerText == cellArray[4].innerText) && (cellArray[4].innerText == cellArray[6].innerText)) {
+                    setTimeout(function () { alert("Its a win, Please press the play again button or refresh the...!") }, 500);
+                    gamestatus = false;
+                }
+
+            }}
             }
 
-            currentCell.innerText = currentPlayer;
-            
-            if ((cellArray[0].innerText != "") && (cellArray[0].innerText == cellArray[1].innerText) && (cellArray[1].innerText == cellArray[2].innerText)) {
-                setTimeout(function(){alert("Its a win, Please press the play again button or refresh the...!")},500);
-                gamestatus=false;   
-            }
 
-        }
-        
-
-
-    }
-    }
-
-
-    startgame();
-
-    $scope.playAgain = () => {
-        cellArray.forEach(cell => {
-            cell.innerText = "";
-            document.getElementById("player1Highlight").style.color = "red"
-            document.getElementById("player2Highlight").style.color = "black"
             startgame();
-        })
-    }
 
-});
+            $scope.playAgain = () => {
+                cellArray.forEach(cell => {
+                    cell.innerText = "";
+                    document.getElementById("player1Highlight").style.color = "red"
+                    document.getElementById("player2Highlight").style.color = "black"
+                    startgame();
+                })
+            }
+
+        });
 
 

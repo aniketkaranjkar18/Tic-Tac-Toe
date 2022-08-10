@@ -104,7 +104,7 @@ ticTacToe.controller("boardCtrl", function ($scope) {
                     setTimeout(function () { alert("Its a win, Please press the play again button or refresh the...!") }, 500);
                     gamestatus = false;
                 } else if ((cellArray[2].innerText != "") && (cellArray[2].innerText == cellArray[4].innerText) && (cellArray[4].innerText == cellArray[6].innerText)) {
-                    setTimeout(function () { alert("Its a win, Please press the play again button or refresh the...!") }, 500);
+                    setTimeout(function () { alert("Its a win, Please press the play again button or refresh the page...!") }, 500);
                     gamestatus = false;
                 }
 
